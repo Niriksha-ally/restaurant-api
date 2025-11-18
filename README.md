@@ -185,6 +185,7 @@ http://localhost:3000
 ---
 
 ## 8️⃣ GitHub Repository Link
+https://github.com/Niriksha-ally/restaurant-api.git
 
 
 ---
@@ -197,6 +198,3 @@ http://localhost:3000
 
 ---
 
-### ✅ **You Can Submit This README.md As It Is After Editing Your Details**
-
-If you want me to **generate it automatically** with **your name + GitHub link + restaurant name**, tell me and I will personalize it.
