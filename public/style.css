@@ -1,0 +1,107 @@
+/* public/css/style.css */
+body {
+  font-family: Arial, sans-serif;
+  background: #fbfaf8;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.welcome {
+  margin: 6px 0 20px 0;
+  color: #555;
+}
+
+.controls {
+  margin-bottom: 20px;
+}
+
+.controls button {
+  margin-right: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  background: white;
+}
+
+.output {
+  margin-top: 16px;
+}
+
+/* Menu item card */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  border: 1px solid #e6e6e6;
+  padding: 12px;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.item-title {
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap:8px;
+}
+
+.item-title h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.badge {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid #d1e7c4;
+  background: #eff8e8;
+  color: #3a7d2f;
+}
+
+/* Non-veg label */
+.badge.nonveg {
+  border-color: #f4c6c6;
+  background: #fff2f2;
+  color: #b33;
+}
+
+/* Description and meta */
+.meta {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 6px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Categories list */
+.category-list {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list li {
+  padding: 8px;
+  border-bottom: 1px dashed #eee;
+}

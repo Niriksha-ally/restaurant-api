@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Saffron Spoon | Menu</title>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #faf7f2;
+      padding: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 38px;
+      color: #6b2d1a;
+    }
+
+    p {
+      color: #444;
+      margin-bottom: 25px;
+    }
+
+    button {
+      background: #6b2d1a;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      margin: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #9a452b;
+    }
+
+    .menu-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .item-card {
+      background: white;
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid #e3dcd2;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+      transition: 0.2s;
+    }
+
+    .item-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .price {
+      font-weight: bold;
+      color: #6b2d1a;
+      margin-top: 6px;
+    }
+
+    .veg-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-left: 8px;
+      background: #2ecc71;
+      color: white;
+    }
+
+    .category-tag {
+      font-size: 12px;
+      background: #eee;
+      padding: 4px 6px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+    .loader {
+      display: none;
+      font-size: 18px;
+      margin-top: 20px;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🍽️ Saffron Spoon</h1>
+<p>Modern comfort food with a spice-kissed twist.</p>
+
+<button onclick="fetchData('/menu')">Explore Entire Menu →</button>
+<button onclick="fetchData('/menu/vegetarian')">Pure Veg Selections 🌿</button>
+<button onclick="fetchData('/menu/categories')">Browse by Course 🍽️</button>
+
+<div class="loader" id="loader">Fetching menu…</div>
+<div id="output" class="menu-container"></div>
+
+<script>
+  async function fetchData(endpoint) {
+    document.getElementById("loader").style.display = "block";
+    document.getElementById("output").innerHTML = "";
+
+    try {
+      const res = await fetch(endpoint);
+      const data = await res.json();
+
+      document.getElementById("loader").style.display = "none";
+
+      if (endpoint === "/menu/categories") {
+        renderCategories(data.categories);
+      } else {
+        renderMenu(data);
+      }
+    } catch (err) {
+      document.getElementById("output").innerHTML = "<p>⚠️ Error loading data</p>";
+    }
+  }
+
+  function renderMenu(items) {
+    const container = document.getElementById("output");
+    items.forEach(i => {
+      container.innerHTML += `
+        <div class="item-card">
+          <h3>${i.name} ${i.isVegetarian ? '<span class="veg-badge">VEG</span>' : ''}</h3>
+          <p class="price">₹ ${i.price}</p>
+          <span class="category-tag">${i.category}</span>
+          <p>${i.description}</p>
+        </div>`;
+    });
+  }
+
+  function renderCategories(list) {
+    const container = document.getElementById("output");
+    list.forEach(c => {
+      container.innerHTML += `
+        <div class="item-card">
+          <h3>${c.name}</h3>
+          <p class="price">Items: ${c.itemCount}</p>
+        </div>`;
+    });
+  }
+</script>
+
+</body>
+</html>
