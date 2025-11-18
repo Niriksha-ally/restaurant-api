@@ -186,8 +186,6 @@ http://localhost:3000
 
 ## 8️⃣ GitHub Repository Link
 
-🔗 [https://github.com/YourUserName/restaurant-api](https://github.com/YourUserName/restaurant-api)
-*(Replace with your actual link)*
 
 ---
 
